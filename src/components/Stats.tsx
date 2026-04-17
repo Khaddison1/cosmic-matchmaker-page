@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 const stats = [
   { value: "12", label: "Zodiac Signs" },
   { value: "144", label: "Compatibility Pairs" },
-  { value: "27K+", label: "Souls on Waitlist" },
   { value: "98%", label: "Match Accuracy" },
 ];
 
@@ -12,7 +11,7 @@ const Stats = () => {
     <section className="relative py-20 px-6">
       <div className="max-w-5xl mx-auto">
         <div className="glass-panel rounded-3xl p-10 md:p-14">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
+          <div className="grid grid-cols-3 gap-8 md:gap-4">
             {stats.map((s, i) => (
               <motion.div
                 key={i}
