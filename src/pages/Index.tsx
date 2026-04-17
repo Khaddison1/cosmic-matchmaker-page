@@ -5,7 +5,7 @@ import StarField from "@/components/StarField";
 import FloatingParticles from "@/components/FloatingParticles";
 import ZodiacWheel from "@/components/ZodiacWheel";
 import Stats from "@/components/Stats";
-import Testimonials from "@/components/Testimonials";
+
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -144,7 +144,6 @@ export default function Home() {
         </section>
 
         <Stats />
-        <Testimonials />
       </main>
 
       <Footer />
