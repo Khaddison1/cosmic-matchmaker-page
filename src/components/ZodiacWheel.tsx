@@ -1,16 +1,18 @@
+// Text-presentation variation selector (U+FE0E) forces glyph (not emoji) rendering
+const VS = "\uFE0E";
 const ZODIAC_SIGNS = [
-  { name: "Aries", glyph: "♈", date: "Mar 21" },
-  { name: "Taurus", glyph: "♉", date: "Apr 20" },
-  { name: "Gemini", glyph: "♊", date: "May 21" },
-  { name: "Cancer", glyph: "♋", date: "Jun 21" },
-  { name: "Leo", glyph: "♌", date: "Jul 23" },
-  { name: "Virgo", glyph: "♍", date: "Aug 23" },
-  { name: "Libra", glyph: "♎", date: "Sep 23" },
-  { name: "Scorpio", glyph: "♏", date: "Oct 23" },
-  { name: "Sagittarius", glyph: "♐", date: "Nov 22" },
-  { name: "Capricorn", glyph: "♑", date: "Dec 22" },
-  { name: "Aquarius", glyph: "♒", date: "Jan 20" },
-  { name: "Pisces", glyph: "♓", date: "Feb 19" },
+  { name: "Aries", glyph: "\u2648" + VS, date: "Mar 21" },
+  { name: "Taurus", glyph: "\u2649" + VS, date: "Apr 20" },
+  { name: "Gemini", glyph: "\u264A" + VS, date: "May 21" },
+  { name: "Cancer", glyph: "\u264B" + VS, date: "Jun 21" },
+  { name: "Leo", glyph: "\u264C" + VS, date: "Jul 23" },
+  { name: "Virgo", glyph: "\u264D" + VS, date: "Aug 23" },
+  { name: "Libra", glyph: "\u264E" + VS, date: "Sep 23" },
+  { name: "Scorpio", glyph: "\u264F" + VS, date: "Oct 23" },
+  { name: "Sagittarius", glyph: "\u2650" + VS, date: "Nov 22" },
+  { name: "Capricorn", glyph: "\u2651" + VS, date: "Dec 22" },
+  { name: "Aquarius", glyph: "\u2652" + VS, date: "Jan 20" },
+  { name: "Pisces", glyph: "\u2653" + VS, date: "Feb 19" },
 ];
 
 const ZodiacWheel = () => {
@@ -126,10 +128,11 @@ const ZodiacWheel = () => {
                   textAnchor="middle"
                   dominantBaseline="central"
                   fill="hsl(45 95% 78%)"
-                  fontSize="22"
-                  fontFamily="'Cormorant Garamond', serif"
+                  fontSize="24"
+                  fontFamily="'Noto Sans Symbols 2', 'Noto Sans Symbols', 'DejaVu Sans', 'Segoe UI Symbol', serif"
+                  fontWeight="400"
                   filter="url(#glyphGlow)"
-                  style={{ paintOrder: "stroke" }}
+                  style={{ fontVariantEmoji: "text" } as React.CSSProperties}
                 >
                   {sign.glyph}
                 </text>
