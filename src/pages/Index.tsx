@@ -3,6 +3,7 @@ import { Sparkles, Star } from "lucide-react";
 import StarField from "@/components/StarField";
 import FloatingParticles from "@/components/FloatingParticles";
 import WaitlistForm from "@/components/WaitlistForm";
+import ZodiacWheel from "@/components/ZodiacWheel";
 import Stats from "@/components/Stats";
 import Footer from "@/components/Footer";
 
@@ -43,6 +44,10 @@ export default function Home() {
         >
           Where ancient astrology meets modern connection. Discover love written in the stars.
         </motion.p>
+
+        <div className="mt-10 w-full max-w-md">
+          <ZodiacWheel />
+        </div>
 
         <div className="mt-10 w-full max-w-md">
           <WaitlistForm />
