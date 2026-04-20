@@ -66,7 +66,7 @@ export default function Home() {
         </motion.p>
 
         <div className="mt-10 w-full max-w-md">
-          <ZodiacWheel />
+          <WaitlistForm />
         </div>
       </section>
 
