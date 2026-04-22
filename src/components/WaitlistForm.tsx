@@ -2,6 +2,7 @@ import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
 import { Sparkles, Check } from "lucide-react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 const WaitlistForm = () => {
   const [email, setEmail] = useState("");
@@ -10,15 +11,34 @@ const WaitlistForm = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+    const trimmed = email.trim().toLowerCase();
+    if (!trimmed.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/) || trimmed.length > 255) {
       toast.error("Please enter a valid email", {
         description: "The cosmos requires a real address ✨",
       });
       return;
     }
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 900));
+    const { error } = await supabase
+      .from("waitlist_signups")
+      .insert({ email: trimmed, source: "landing" });
     setLoading(false);
+
+    if (error) {
+      if (error.code === "23505") {
+        // Already on list — treat as success
+        setSubmitted(true);
+        toast.success("You're already on the list", {
+          description: "The stars remember you ✨",
+        });
+        return;
+      }
+      toast.error("Something went wrong", {
+        description: "Please try again in a moment.",
+      });
+      return;
+    }
+
     setSubmitted(true);
     toast.success("You're on the list", {
       description: "The stars have aligned. We'll be in touch.",
