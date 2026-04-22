@@ -41,8 +41,19 @@ const WaitlistForm = () => {
 
     setSubmitted(true);
     toast.success("You're on the list", {
-      description: "The stars have aligned. We'll be in touch.",
+      description: "The stars have aligned. Check your inbox ✨",
     });
+
+    // Send branded welcome email (fire-and-forget)
+    supabase.functions
+      .invoke("send-transactional-email", {
+        body: {
+          templateName: "welcome-waitlist",
+          recipientEmail: trimmed,
+          idempotencyKey: `waitlist-welcome-${trimmed}`,
+        },
+      })
+      .catch((err) => console.error("Welcome email failed", err));
   };
 
   if (submitted) {
